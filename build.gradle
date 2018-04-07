@@ -1,7 +1,18 @@
+buildscript {
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath ("org.junit.platform:junit-platform-gradle-plugin:1.0.0-RC2")
+    }
+}
+
 group 'fr.ath.kata'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'org.junit.platform.gradle.plugin'
 
 sourceCompatibility = 1.8
 
@@ -16,8 +27,10 @@ dependencies {
     testRuntimeOnly(
             'org.junit.jupiter:junit-jupiter-engine:5.1.0'
     )
-
     testCompile ( 'org.assertj:assertj-core:3.9.0',
             'org.junit.jupiter:junit-jupiter-params:5.1.0')
+}
 
+junitPlatform {
+    details 'tree'
 }
